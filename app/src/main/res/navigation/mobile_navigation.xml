@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_appeals">
+
+    <activity
+        android:id="@+id/navigation_appeals"
+        android:name="com.example.sskplatform.ui.appeals.AppealsActivity"
+        android:label="@string/title_appeals"
+        tools:layout="@layout/fragment_appeals" />
+
+    <activity
+        android:id="@+id/navigation_violation"
+        android:name="com.example.sskplatform.ui.violation.ViolationActivity"
+        android:label="@string/title_violation"
+        tools:layout="@layout/fragment_violation" />
+
+    <activity
+        android:id="@+id/navigation_profile"
+        android:name="com.example.sskplatform.ui.profile.ProfileActivity"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
+</navigation>

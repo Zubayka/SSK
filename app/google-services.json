@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "367808697103",
+    "project_id": "stardatabase-4869c",
+    "storage_bucket": "stardatabase-4869c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367808697103:android:53a619420dfdd46117e47a",
+        "android_client_info": {
+          "package_name": "com.example.sskplatform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367808697103-raoltl8ge14pn9kh7iaona3pth43809f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR96FWNdcoybXJYZwjyTYGmy0OLobhmRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367808697103-raoltl8ge14pn9kh7iaona3pth43809f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Инспектор</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_login">Логин</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="action_sign_in">Войти</string>
+    <string name="action_sign_in_short">Вход</string>
+    <string name="welcome">"Добро пожаловать!"</string>
+    <string name="invalid_username">Заполните это поле</string>
+    <string name="invalid_password">Пароль должен состоять минимум из 4 цифр</string>
+    <string name="login_failed">"Логин введен неверно"</string>
+    <string name="title_activity_main2">NavigateActivity</string>
+    <string name="title_appeals">Мои обращения</string>
+    <string name="title_violation">Нарушение</string>
+    <string name="title_profile">Профиль</string>
+    <string name="add_photo">Добавить фото</string>
+    <string name="send">Отправить</string>
+    <string name="logout">Выйти</string>
+    <string name="reload">Обновить</string>
+    <string name="title_activity_test">Test</string>
+    <string name="docs">
+        <u>Открыть дополнительные материалы</u>
+    </string>
+</resources>

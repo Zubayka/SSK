@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.violation.ViolationActivity">
+
+    <TextView
+        android:id="@+id/text_violation"
+        android:layout_width="310dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Опишите проблему"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="send"
+        android:text="@string/send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_picture"
+        app:layout_constraintVertical_bias="0.171"
+        android:backgroundTint="@android:color/holo_orange_light"/>
+
+
+    <Button
+        android:id="@+id/add_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:text="@string/add_photo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_violation"
+        app:layout_constraintVertical_bias="0.793" />
+
+    <EditText
+        android:id="@+id/v_message"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="302dp"
+        android:layout_height="67dp"
+        android:background="@drawable/edit_text_border_purple"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Описание сообщения"
+        android:lines="8"
+        android:maxLines="10"
+        android:minLines="6"
+        android:scrollbars="vertical"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/add_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_violation"
+        app:layout_constraintVertical_bias="0.147"
+        />
+
+    <Spinner
+        android:id="@+id/v_location"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="303dp"
+        android:layout_height="31dp"
+        android:background="@drawable/edit_text_border_purple"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        android:lines="8"
+        android:maxLines="10"
+        android:minLines="6"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/add_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_violation"
+        app:layout_constraintVertical_bias="0.317" />
+
+    <EditText
+        android:id="@+id/v_responsible"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="302dp"
+        android:layout_height="33dp"
+        android:background="@drawable/edit_text_border_cyan"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Ответственный за беспорядок"
+        android:inputType="text"
+        android:lines="8"
+        android:maxLines="10"
+        android:minLines="6"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/add_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_violation"
+        app:layout_constraintVertical_bias="0.422" />
+
+    <EditText
+        android:id="@+id/v_position"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="299dp"
+        android:layout_height="34dp"
+        android:background="@drawable/edit_text_border_cyan"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Должность ответственного"
+        android:inputType="text"
+        android:lines="8"
+        android:maxLines="10"
+        android:minLines="6"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/add_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_violation"
+        app:layout_constraintVertical_bias="0.532" />
+
+    <Spinner
+        android:id="@+id/v_title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="303dp"
+        android:layout_height="31dp"
+        android:background="@drawable/edit_text_border_purple"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        android:lines="8"
+        android:maxLines="10"
+        android:minLines="6"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/add_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_violation"
+        app:layout_constraintVertical_bias="0.037" />
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="164dp"
+        android:layout_height="168dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.63" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menuViolations"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_nav_menu"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

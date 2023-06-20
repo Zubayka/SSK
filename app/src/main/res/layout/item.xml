@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/Card_View"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/CardView.Light"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="12dp"
+    android:foreground="?selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/item_title"
+            android:text="Title"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/item_description"
+            android:text="Details"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/item_date"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="right"
+            android:text="Date"
+            android:textColor="@color/gray"
+            android:textSize="16sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

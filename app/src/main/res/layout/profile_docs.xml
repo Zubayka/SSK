@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.profile.Docs">
+
+    <TextView
+        android:id="@+id/KANP"
+        android:layout_width="400dp"
+        android:layout_height="39dp"
+        android:onClick="openDocs"
+        android:text="Комплектация аптечки на предприятии"
+        android:textColor="@color/common_google_signin_btn_text_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.317" />
+
+    <TextView
+        android:id="@+id/OSOTPOPR"
+        android:layout_width="400dp"
+        android:layout_height="39dp"
+        android:onClick="openDocs"
+        android:text="Обязанности СОТ по ОПР 2907"
+        android:textColor="@color/common_google_signin_btn_text_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.394" />
+
+    <TextView
+        android:id="@+id/POOT"
+        android:layout_width="400dp"
+        android:layout_height="39dp"
+        android:onClick="openDocs"
+        android:text="Памятка организации охраны труда"
+        android:textColor="@color/common_google_signin_btn_text_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.469" />
+
+    <TextView
+        android:id="@+id/IPOTDE"
+        android:layout_width="400dp"
+        android:layout_height="39dp"
+        android:onClick="openDocs"
+        android:text="Инструкция по охране труда для экономиста"
+        android:textColor="@color/common_google_signin_btn_text_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.539" />
+
+    <TextView
+        android:id="@+id/IOTPVRNV"
+        android:layout_width="400dp"
+        android:layout_height="39dp"
+        android:onClick="openDocs"
+        android:text="ИОТ при выполнении работ на высоте"
+        android:textColor="@color/common_google_signin_btn_text_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.169" />
+
+    <TextView
+        android:id="@+id/IOTGS"
+        android:layout_width="400dp"
+        android:layout_height="39dp"
+        android:onClick="openDocs"
+        android:text="ИОТ электрогазосварщик"
+        android:textColor="@color/common_google_signin_btn_text_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.245" />
+
+    <TextView
+        android:id="@+id/BRNKT"
+        android:layout_width="400dp"
+        android:layout_height="39dp"
+        android:onClick="openDocs"
+        android:text="Безопасность работы на копировальной технике"
+        android:textColor="@color/common_google_signin_btn_text_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <TextView
+        android:id="@+id/KIB"
+        android:layout_width="400dp"
+        android:layout_height="39dp"
+        android:onClick="openDocs"
+        android:text="Компьютер и безопасность"
+        android:textColor="@color/common_google_signin_btn_text_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

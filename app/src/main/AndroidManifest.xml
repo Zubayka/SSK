@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/redstar"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SSKplatform"
+        tools:targetApi="31">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.sskplatform.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".ui.profile.Docs"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NavigateActivity"
+            android:exported="true"
+            android:label="@string/title_activity_main2"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.violation.ViolationActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".ui.appeals.AppealsActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".AnonymousSend"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
+    </application>
+
+</manifest>
