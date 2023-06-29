@@ -42,9 +42,6 @@
             android:label="@string/title_activity_main2"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true" />
-        <activity
             android:name=".ui.violation.ViolationActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan"/>
@@ -54,10 +51,6 @@
             android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".ui.profile.ProfileActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity
-            android:name=".AnonymousSend"
             android:exported="true"
             android:windowSoftInputMode="adjustPan"/>
     </application>
