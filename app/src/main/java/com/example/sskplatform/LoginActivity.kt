@@ -9,7 +9,6 @@ import android.os.Build
 import android.util.Log
 import android.widget.Button
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.ViewModelProvider
 import com.example.sskplatform.ui.appeals.AppealsActivity
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -48,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
                         val savedPassword = userDoc.getString("password")
                         if (savedPassword == password) {
                             // Пароль совпадает, вход
-                            Toast.makeText(this, "Добро пожаловать, $username", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Добро пажаловать, $username", Toast.LENGTH_SHORT).show()
                             Log.d("LOGIN ACTIVITY", username)
                             transition()
                         } else {
