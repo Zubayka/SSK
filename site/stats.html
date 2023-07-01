@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Статистика</title>
+    <link rel="stylesheet" href="stats.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.js"></script>
+    <style>
+      .chart-container {
+        flex-direction: row;
+        font-size: large;
+        align-items: center;
+        max-width: 800px;
+        margin: 0 auto;
+        margin-bottom: 100px;
+      }
+      .chart-row {
+        align-items: center;
+        font-size: large;
+        justify-content: space-around;
+        margin-bottom: 100px;
+        padding-left: 100px;
+      }
+      .chart_title {
+        padding-right: 100px;
+        font-size: large;
+      }
+      canvas.chart {
+        max-width: 600px;
+        font-size: large;
+        max-height: 600px;
+        margin-bottom: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="links">
+        <a href="C:/Users/Зубай/Desktop/SSKsite/appeals/appeals.html">Обращения</a>
+        <a href="C:/Users/Зубай/Desktop/SSKsite/users/users.html">Пользователи</a>
+        <a href="C:/Users/Зубай/Desktop/SSKsite/stats.html">Статистика</a>
+      </div>
+      <button class="logout" id="logout">Выйти</button>
+    </header>
+    <br>
+    <div class="chart-container">
+      
+      <div class="chart-row">
+        <div class="chart_title">
+          <h1>Диаграмма тематик нарушений</h1>
+        </div>
+        <canvas id="titleChart" class="chart"></canvas>
+        <div class="chart_title">
+          <h1>Диаграмма локаций</h1>
+        </div>
+        <canvas id="locationChart" class="chart"></canvas>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.js"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+        query,
+        onSnapshot,
+      } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics.js";
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+  apiKey: "AIzaSyBXp6ESQ8LzSu53U4s-tnXmvsN9IELO7p4",
+  authDomain: "stardatabase-4869c.firebaseapp.com",
+  databaseURL:
+    "https://stardatabase-4869c-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "stardatabase-4869c",
+  storageBucket: "stardatabase-4869c.appspot.com",
+  messagingSenderId: "367808697103",
+  appId: "1:367808697103:web:7ae6727911e4ba8e17e47a",
+  measurementId: "G-ELC122N1DM",
+};
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getFirestore(app);
+
+      logout.addEventListener("click", (e) => {
+      window.location.href =
+        "C:/Users/Зубай/Desktop/SSKsite/entrancePage/entrancePage.html";
+    });
+
+      const titleCounts = {};
+      const locationCounts = {};
+
+      // Запрос к коллекции "Violations"
+      const colRef = collection(db, "Violations");
+      const q = query(colRef);
+
+      // Слушатель для обновления статистики при изменении данных в Firestore
+      onSnapshot(q, (snapshot) => {
+        Object.keys(titleCounts).forEach((title) => {
+          titleCounts[title] = 0;
+        });
+        Object.keys(locationCounts).forEach((location) => {
+          locationCounts[location] = 0;
+        });
+
+        snapshot.docs.forEach((doc) => {
+          const title = doc.data().title;
+          const location = doc.data().location;
+
+          if (title in titleCounts) {
+            titleCounts[title]++;
+          } else {
+            titleCounts[title] = 1;
+          }
+
+          if (location in locationCounts) {
+            locationCounts[location]++;
+          } else {
+            locationCounts[location] = 1;
+          }
+        });
+
+        updateTitleChart();
+        updateLocationChart();
+      });
+
+      function updateTitleChart() {
+        const filteredTitles = Object.keys(titleCounts).filter((title) => title !== "undefined");
+        const filteredTitleCounts = filteredTitles.map((title) => titleCounts[title]);
+
+        const titleChartData = {
+          labels: filteredTitles,
+          datasets: [
+            {
+              label: "Частота встречаемости",
+              data: filteredTitleCounts,
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.5)",
+                "rgba(54, 162, 235, 0.5)",
+                "rgba(255, 206, 86, 0.5)",
+                "rgba(75, 192, 192, 0.5)",
+                "rgba(153, 102, 255, 0.5)",
+                "rgba(255, 159, 64, 0.5)",
+                "rgba(255, 99, 132, 0.5)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        };
+
+        const titleChartOptions = {
+          responsive: true,
+          maintainAspectRatio: false,
+        };
+
+        const titleChartElement = document.getElementById("titleChart");
+        new Chart(titleChartElement, {
+          type: "pie",
+          data: titleChartData,
+          options: titleChartOptions,
+        });
+      }
+
+      function updateLocationChart() {
+        const filteredLocations = Object.keys(locationCounts).filter((location) => location !== "undefined");
+        const filteredLocationCounts = filteredLocations.map((location) => locationCounts[location]);
+
+        const locationChartData = {
+          labels: filteredLocations,
+          datasets: [
+            {
+              label: "Частота встречаемости",
+              data: filteredLocationCounts,
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.5)",
+                "rgba(54, 162, 235, 0.5)",
+                "rgba(255, 206, 86, 0.5)",
+                "rgba(75, 192, 192, 0.5)",
+                "rgba(153, 102, 255, 0.5)",
+                "rgba(255, 159, 64, 0.5)",
+                "rgba(255, 99, 132, 0.5)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        };
+
+        const locationChartOptions = {
+          responsive: true,
+          maintainAspectRatio: false,
+        };
+
+        const locationChartElement = document.getElementById("locationChart");
+        new Chart(locationChartElement, {
+          type: "pie",
+          data: locationChartData,
+          options: locationChartOptions,
+        });
+      }
+    </script>
+  </body>
+</html>

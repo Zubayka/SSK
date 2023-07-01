@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Обращения</title>
+    <link rel="stylesheet" href="users.css" />
+  </head>
+  <body>
+    <header>
+      <div class="links">
+        <a href="C:/Users/Зубай/Desktop/SSKsite/appeals/appeals.html">Обращения</a>
+        <a href="C:/Users/Зубай/Desktop/SSKsite/users/users.html">Пользователи</a>
+        <a href="C:/Users/Зубай/Desktop/SSKsite/stats.html">Статистика</a>
+      </div>
+      <button class="logout" id="logout">Выйти</button>
+    </header>
+    <div>
+      <label for="name">Удалить пользователя</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Введите ФИО сотрудника"/>
+      <button type="erase" class="erase" id="erase">Удалить</button>
+      <button type="add" class="add" id="add">Добавить нового сотрудника</button>
+    </div>
+    <div id="data-container"></div>
+  </body>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      query,
+      where,
+      getDocs,
+      deleteDoc,
+    } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBXp6ESQ8LzSu53U4s-tnXmvsN9IELO7p4",
+      authDomain: "stardatabase-4869c.firebaseapp.com",
+      databaseURL:
+        "https://stardatabase-4869c-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "stardatabase-4869c",
+      storageBucket: "stardatabase-4869c.appspot.com",
+      messagingSenderId: "367808697103",
+      appId: "1:367808697103:web:7ae6727911e4ba8e17e47a",
+      measurementId: "G-ELC122N1DM",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+
+    logout.addEventListener("click", (e) => {
+      window.location.href =
+        "C:/Users/Зубай/Desktop/SSKsite/entrancePage/entrancePage.html";
+    });
+
+    add.addEventListener("click", (e) => {
+      window.location.href =
+        "C:/Users/Зубай/Desktop/SSKsite/users/addUser.html";
+    });
+
+    const eraseButton = document.getElementById("erase");
+      eraseButton.addEventListener("click", () => {
+        const name = document.getElementById("name").value;
+        
+        if (name.trim() !== "") {
+          const colRef = collection(db, "Users");
+          const q = query(colRef, where("name", "==", name));
+
+          getDocs(q)
+            .then((snapshot) => {
+              snapshot.forEach((doc) => {
+                deleteDoc(doc.ref)
+                  .then(() => {
+                    alert("Пользователь удалён!");
+                  })
+                  .catch((error) => {
+                    console.log("Ошибка при удалении пользователя:", error);
+                  });
+              });
+            })
+            .catch((error) => {
+              console.log("Ошибка при получении пользователя:", error);
+            });
+        }
+      });
+
+      const colRef = collection(db, "Users");
+      const q = query(colRef);
+
+      getDocs(q)
+        .then((snapshot) => {
+          let users = [];
+          snapshot.docs.forEach((doc) => {
+            users.push({ ...doc.data() });
+          });
+          displayUsers(users);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+
+    function displayUsers(users) {
+      const container = document.getElementById("data-container");
+      container.innerHTML = ""; 
+
+      users.forEach((user) => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+      
+        <h3>${user.name}</h3>
+        <h4>Должность: ${user.position}</h4>
+        <h4>Локации: ${user.areas}</h4>
+        <h5>${user.username}</h4>
+        <hr>
+    `;
+        container.appendChild(div);
+      });
+    }
+  </script>
+</html>

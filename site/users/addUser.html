@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Новый пользователь</title>
+    <link rel="stylesheet" href="addUser.css" />
+  </head>
+  <body>
+    <header>
+      <div class="links">
+        <a href="C:/Users/Зубай/Desktop/SSKsite/appeals/appeals.html">Обращения</a>
+        <a href="C:/Users/Зубай/Desktop/SSKsite/users/users.html">Пользователи</a>
+        <a href="C:/Users/Зубай/Desktop/SSKsite/stats.html">Статистика</a>
+      </div>
+      <button class="logout" id="logout">Выйти</button>
+    </header>
+    <div class="container">
+      <h1>Новый инспектор</h1>
+      <form>
+        <label for="username">Имя пользователя</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Введите имя пользователя"/>
+
+        <label for="password">Пароль</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Введите пароль"/>
+
+        <label for="fullname">ФИО</label>
+        <input
+          type="fullname"
+          id="fullname"
+          name="fullname"
+          placeholder="Введите ФИО"/>
+
+        <label for="areas">Локации</label>
+        <input
+          type="areas"
+          id="areas"
+          name="areas"
+          placeholder="Введите зоны ответственности"/>
+
+        <button type="button" id="submitData" name="submitData">Создать</button>
+      </form>
+    </div>
+  </body>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics.js";
+    import {
+      getFirestore,
+      setDoc,
+      addDoc,
+      doc,
+      collection,
+    } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBXp6ESQ8LzSu53U4s-tnXmvsN9IELO7p4",
+      authDomain: "stardatabase-4869c.firebaseapp.com",
+      databaseURL:
+        "https://stardatabase-4869c-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "stardatabase-4869c",
+      storageBucket: "stardatabase-4869c.appspot.com",
+      messagingSenderId: "367808697103",
+      appId: "1:367808697103:web:7ae6727911e4ba8e17e47a",
+      measurementId: "G-ELC122N1DM",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+
+    logout.addEventListener("click", (e) => {
+      window.location.href =
+        "C:/Users/Зубай/Desktop/SSKsite/entrancePage/entrancePage.html";
+    });
+
+    submitData.addEventListener("click", (e) => {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var fullname = document.getElementById("fullname").value;
+      var areas = document.getElementById("areas").value;
+      var position = "Инспектор";
+
+      const docRef = doc(db, "Users", fullname);
+
+      setDoc(docRef, {
+        username: username,
+        password: password,
+        name: fullname,
+        areas: areas,
+        position: position,
+      })
+        .then(() => {
+          alert("Сохранить пользователя?");
+        })
+        .catch((error) => {
+          alert("Ошибка: " + error);
+        });
+    });
+  </script>
+</html>

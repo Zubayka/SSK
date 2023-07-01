@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="stylesheet" href="entrancePage.css">
+</head>
+<body>
+    <div class="container">
+        <img src="https://firebasestorage.googleapis.com/v0/b/stardatabase-4869c.appspot.com/o/logo.jpg?alt=media&token=8ed07e3f-bf72-4485-a5ee-8741f11b92cd" alt="логотип">
+        <form>
+            <h1>Вход</h1>
+            <label for="username">Логин</label>
+            <input type="text" id="username" name="username" placeholder="Введите имя пользователя">
+          
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="password" placeholder="Введите пароль">
+          
+            <button type="button" id="enter" name="enter">Войти</button>
+        </form>
+    </div>
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+    import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBXp6ESQ8LzSu53U4s-tnXmvsN9IELO7p4",
+      authDomain: "stardatabase-4869c.firebaseapp.com",
+      databaseURL:
+        "https://stardatabase-4869c-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "stardatabase-4869c",
+      storageBucket: "stardatabase-4869c.appspot.com",
+      messagingSenderId: "367808697103",
+      appId: "1:367808697103:web:7ae6727911e4ba8e17e47a",
+      measurementId: "G-ELC122N1DM",
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+
+    enter.addEventListener('click', (e) => {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    const usersCollectionRef = collection(db, "Users");
+
+    const q = query(usersCollectionRef, where("username", "==", username));
+    getDocs(q)
+        .then((querySnapshot) => {
+            if (!querySnapshot.empty) {
+                const userDoc = querySnapshot.docs[0];
+                const savedPassword = userDoc.data().password;
+
+                if (savedPassword === password) {
+                    alert("Добро пожаловать, " + username);
+                    console.log("LOGIN ACTIVITY: " + username);
+                    window.location.href = "C:/Users/Зубай/Desktop/SSKsite/appeals/appeals.html";
+                } else {
+                    alert("Неверный пароль");
+                }
+            } else {
+                alert("Пользователь не найден");
+            }
+        })
+        .catch((error) => {
+            console.log("Ошибка:", error);
+            alert("Ошибка при выполнении операции");
+        });
+    });
+  </script>
+
+</html>
