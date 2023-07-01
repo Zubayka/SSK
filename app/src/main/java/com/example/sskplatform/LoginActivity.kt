@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
                         val savedPassword = userDoc.getString("password")
                         if (savedPassword == password) {
                             // Пароль совпадает, вход
-                            Toast.makeText(this, "Добро пажаловать, $username", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Добро пожаловать, $username", Toast.LENGTH_SHORT).show()
                             Log.d("LOGIN ACTIVITY", username)
                             transition()
                         } else {
